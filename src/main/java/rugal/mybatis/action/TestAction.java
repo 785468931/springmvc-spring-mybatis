@@ -17,6 +17,7 @@ public class TestAction
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public Object index()
     {
-        return "{Rugal:Bernstein}";
+        return "{\"name\":\"Rugal Bernstein}\"";
+
     }
 }
