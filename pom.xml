@@ -8,8 +8,10 @@
     <name>mybatis Maven Webapp</name>
     <url>http://central.maven.org/</url>
     <properties>
+        <spring-version>4.0.0.RELEASE</spring-version>
+        <!-- use utf-8 encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <dependencies>
         <!-- Database Connector start -->
@@ -24,7 +26,7 @@
         <dependency>
             <groupId>com.jolbox</groupId>
             <artifactId>bonecp</artifactId>
-            <version>0.8.0.RELEASE</version>
+        <version>0.8.0.RELEASE</version>
             <exclusions>
                 <exclusion>
                     <artifactId>slf4j-api</artifactId>
@@ -112,7 +114,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -127,24 +129,24 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <artifactId>spring-expression</artifactId>
             <groupId>org.springframework</groupId>
             <type>jar</type>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <artifactId>spring-aop</artifactId>
             <groupId>org.springframework</groupId>
             <type>jar</type>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <artifactId>aopalliance</artifactId>
@@ -156,17 +158,17 @@
             <artifactId>spring-core</artifactId>
             <groupId>org.springframework</groupId>
             <type>jar</type>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <artifactId>commons-logging</artifactId>
@@ -181,12 +183,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.0.0.RELEASE</version>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -200,9 +202,7 @@
             <version>1.9.13</version>
         </dependency>
         <!-- spring web mvc stop -->
-
         <!-- Auto Append -->
-
     </dependencies>
     <build>
         <pluginManagement>
