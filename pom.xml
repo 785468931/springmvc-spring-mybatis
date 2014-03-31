@@ -7,6 +7,12 @@
     <version>0.1</version>
     <name>mybatis Maven Webapp</name>
     <url>http://central.maven.org/</url>
+    <developers>
+        <developer>
+            <name>Rugal Bernstein</name>
+            <email>ryujinwrath@gmail.com</email>
+        </developer>
+    </developers>
     <properties>
         <spring-version>4.0.0.RELEASE</spring-version>
         <!-- use utf-8 encoding -->
@@ -26,7 +32,7 @@
         <dependency>
             <groupId>com.jolbox</groupId>
             <artifactId>bonecp</artifactId>
-        <version>0.8.0.RELEASE</version>
+            <version>0.8.0.RELEASE</version>
             <exclusions>
                 <exclusion>
                     <artifactId>slf4j-api</artifactId>
