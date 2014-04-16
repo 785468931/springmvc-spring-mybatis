@@ -12,6 +12,7 @@
        http://camel.apache.org/schema/spring          http://camel.apache.org/schema/spring/camel-spring.xsd
 ">
     <!-- properties files location -->
+    <import resource="common/Spring-Common.xml"/>
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
