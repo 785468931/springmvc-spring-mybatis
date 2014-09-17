@@ -1,4 +1,4 @@
-package rugal.mybatis.core.entity;
+package rugal.sample.core.entity;
 
 /**
  *
@@ -13,6 +13,7 @@ public class Student
 
     public Student()
     {
+
     }
 
     public Integer getId()

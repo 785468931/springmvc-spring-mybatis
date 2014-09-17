@@ -1,4 +1,4 @@
-package rugal.mybatis.action;
+package rugal.sample.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Rugal Bernstein
  */
 @Controller
-public class TestAction
+public class StudentAction
 {
 
     @ResponseBody

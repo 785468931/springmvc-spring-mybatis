@@ -1,4 +1,4 @@
-package rugal.mybatis.action;
+package rugal;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -8,16 +8,15 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import rugal.mybatis.TestBase;
 
 /**
  *
- * @author Rugal Bernstein
+ * @author rugal
  */
-@ContextConfiguration(locations = {"classpath:/springmvc-servlet.xml"})
+@ContextConfiguration(classes = config.WebApplicationContext.class)
 @WebAppConfiguration
 @Ignore
-public class ServerSideTestBase extends TestBase
+public abstract class ControllerClientSideTestBase extends JUnitSpringTestBase
 {
 
     @Autowired
@@ -30,5 +29,4 @@ public class ServerSideTestBase extends TestBase
     {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
-
 }
