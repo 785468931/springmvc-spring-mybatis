@@ -33,13 +33,15 @@ public class StudentServiceImplTest extends JUnitSpringTestBase
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void testGetById()
     {
         System.out.println("findById");
         Integer id = 1;
         Student bean = studentService.getById(id);
         System.out.println(bean.getName());
+        System.out.println(bean.getClassRoom().getName());
+
     }
 
     @Test

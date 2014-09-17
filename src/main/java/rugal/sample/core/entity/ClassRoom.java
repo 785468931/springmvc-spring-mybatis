@@ -4,20 +4,14 @@ package rugal.sample.core.entity;
  *
  * @author Rugal Bernstein
  */
-public class Student
+public class ClassRoom
 {
 
     private Integer id;
 
     private String name;
 
-    private ClassRoom classRoom;
-
-    public Student()
-    {
-
-    }
-
+//    List<Student> students;
     public Integer getId()
     {
         return id;
@@ -38,14 +32,13 @@ public class Student
         this.name = name;
     }
 
-    public ClassRoom getClassRoom()
-    {
-        return classRoom;
-    }
-
-    public void setClassRoom(ClassRoom classRoom)
-    {
-        this.classRoom = classRoom;
-    }
-
+//    public List<Student> getStudents()
+//    {
+//        return students;
+//    }
+//
+//    public void setStudents(List<Student> students)
+//    {
+//        this.students = students;
+//    }
 }

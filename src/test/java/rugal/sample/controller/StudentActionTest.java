@@ -6,7 +6,6 @@ import org.springframework.http.MediaType;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import rugal.ControllerClientSideTestBase;
-import rugal.sample.action.StudentAction;
 
 /**
  *
@@ -16,7 +15,7 @@ public class StudentActionTest extends ControllerClientSideTestBase
 {
 
     @Autowired
-    private StudentAction studentAction;
+    private StudentController studentAction;
 
     public StudentActionTest()
     {

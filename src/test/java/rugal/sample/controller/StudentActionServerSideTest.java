@@ -24,7 +24,6 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rugal.ControllerServerSideTestBase;
-import rugal.sample.action.StudentAction;
 import rugal.sample.core.entity.Student;
 
 /**
@@ -35,7 +34,7 @@ public class StudentActionServerSideTest extends ControllerServerSideTestBase
 {
 
     @Autowired
-    private StudentAction studentAction;
+    private StudentController studentAction;
 
     @Test
     @Ignore

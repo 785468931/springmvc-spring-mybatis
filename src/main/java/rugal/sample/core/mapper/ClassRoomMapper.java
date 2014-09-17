@@ -3,48 +3,37 @@ package rugal.sample.core.mapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import rugal.sample.core.entity.ClassRoom;
-import rugal.sample.core.entity.Student;
 
 /**
  *
  * @author Rugal Bernstein
  */
-public interface StudentMapper
+public interface ClassRoomMapper
 {
 
-    String TABLE_NAME = "student";
+    String TABLE_NAME = "class_room";
 
     @Select("SELECT * FROM " + TABLE_NAME)
-    List<Student> selectAll();
+    List<ClassRoom> selectAll();
 
     @Select("SELECT * FROM " + TABLE_NAME + " WHERE id = #{id}")
-    @Results(value =
-    {
-        @Result(property = "classRoom", column = "crid", javaType = ClassRoom.class,
-                one = @One(select = "rugal.sample.core.mapper.ClassRoomMapper.getByID"))
-//        @Result(property = "id", column = "id"),
-//        @Result(property = "name", column = "name")
-    })
-    Student getByID(Integer id);
+    ClassRoom getByID(Integer id);
 
     @Select("SELECT * FROM " + TABLE_NAME + " WHERE name LIKE '%${name}%' ")
-    List<Student> findByName(@Param(value = "name") String name);
+    List<ClassRoom> findByName(@Param(value = "name") String name);
 
     @Update("UPDATE " + TABLE_NAME + " SET name = #{name} WHERE id = #{id}")
-    void update(Student bean);
+    void update(ClassRoom bean);
 
     @Delete("DELETE FROM " + TABLE_NAME + " WHERE id = #{id}")
     void delete(Integer id);
 
     @Insert("INSERT INTO " + TABLE_NAME + "(name) VALUES (#{name})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(Student bean);
+    void insert(ClassRoom bean);
 }
