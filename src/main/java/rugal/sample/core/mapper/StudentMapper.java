@@ -30,13 +30,14 @@ public interface StudentMapper
     {
         @Result(property = "classRoom", column = "crid", javaType = ClassRoom.class,
                 one = @One(select = "rugal.sample.core.mapper.ClassRoomMapper.getByID"))
-//        @Result(property = "id", column = "id"),
-//        @Result(property = "name", column = "name")
     })
     Student getByID(Integer id);
 
     @Select("SELECT * FROM " + TABLE_NAME + " WHERE name LIKE '%${name}%' ")
     List<Student> findByName(@Param(value = "name") String name);
+
+    @Select("SELECT * FROM " + TABLE_NAME + " WHERE crid = ${crid}")
+    List<Student> findByClassRoom(@Param(value = "crid") Integer crid);
 
     @Update("UPDATE " + TABLE_NAME + " SET name = #{name} WHERE id = #{id}")
     void update(Student bean);

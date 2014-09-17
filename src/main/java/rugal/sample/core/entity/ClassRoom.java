@@ -1,5 +1,7 @@
 package rugal.sample.core.entity;
 
+import java.util.List;
+
 /**
  *
  * @author Rugal Bernstein
@@ -11,7 +13,8 @@ public class ClassRoom
 
     private String name;
 
-//    List<Student> students;
+    List<Student> students;
+
     public Integer getId()
     {
         return id;
@@ -32,13 +35,13 @@ public class ClassRoom
         this.name = name;
     }
 
-//    public List<Student> getStudents()
-//    {
-//        return students;
-//    }
-//
-//    public void setStudents(List<Student> students)
-//    {
-//        this.students = students;
-//    }
+    public List<Student> getStudents()
+    {
+        return students;
+    }
+
+    public void setStudents(List<Student> students)
+    {
+        this.students = students;
+    }
 }

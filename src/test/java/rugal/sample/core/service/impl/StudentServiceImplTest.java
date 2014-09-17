@@ -33,7 +33,7 @@ public class StudentServiceImplTest extends JUnitSpringTestBase
     }
 
     @Test
-//    @Ignore
+    @Ignore
     public void testGetById()
     {
         System.out.println("findById");
@@ -42,6 +42,19 @@ public class StudentServiceImplTest extends JUnitSpringTestBase
         System.out.println(bean.getName());
         System.out.println(bean.getClassRoom().getName());
 
+    }
+
+    @Test
+    @Ignore
+    public void testFindByClassRoom()
+    {
+        System.out.println("findByClassRoom");
+        Integer id = 1;
+        List<Student> beans = studentService.findByClassRoom(id);
+        for (Student bean : beans)
+        {
+            System.out.println(bean.getName());
+        }
     }
 
     @Test

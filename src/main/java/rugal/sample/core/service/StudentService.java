@@ -53,4 +53,11 @@ public interface StudentService
      */
     List<Student> findByName(String name);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
+    List<Student> findByClassRoom(Integer id);
+
 }

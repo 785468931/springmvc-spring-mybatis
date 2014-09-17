@@ -1,6 +1,7 @@
 package config;
 
 import com.jolbox.bonecp.BoneCPDataSource;
+import java.util.Properties;
 import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -86,6 +87,9 @@ public class ApplicationContext
     {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
+        Properties properties = new Properties();
+        properties.put("lazyLoadingEnabled", true);
+        sqlSessionFactory.setConfigurationProperties(properties);
         return sqlSessionFactory.getObject();
     }
 //</editor-fold>

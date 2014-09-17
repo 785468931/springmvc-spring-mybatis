@@ -29,7 +29,7 @@ public class ClassRoomServiceImplTest extends JUnitSpringTestBase
         System.out.println("getById");
         Integer id = 1;
         ClassRoom result = service.getById(id);
-        System.out.println(result.getName());
+//        System.out.println(result.getStudents().size());
     }
 
 //    @Test

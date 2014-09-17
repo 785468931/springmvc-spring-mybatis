@@ -44,6 +44,18 @@ public class StudentServiceImpl implements StudentService
      * {@inheritDoc }
      */
     @Override
+    @Transactional(readOnly = true)
+    public List<Student> findByClassRoom(Integer id)
+    {
+//        throw new RuntimeException();//This is for rollback test
+        return studentMapper.findByClassRoom(id);
+    }
+
+    /**
+     *
+     * {@inheritDoc }
+     */
+    @Override
     public void update(Student contact)
     {
         studentMapper.update(contact);

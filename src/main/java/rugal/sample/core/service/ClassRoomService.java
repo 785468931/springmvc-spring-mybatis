@@ -13,40 +13,42 @@ public interface ClassRoomService
 
     /**
      *
-     * {@inheritDoc }
+     * @param id
      */
     void deleteById(Integer id);
 
     /**
      *
-     * {@inheritDoc }
+     * @param name
+     * @return
      */
     @Transactional(readOnly = true)
     List<ClassRoom> findByName(String name);
 
     /**
      *
-     * {@inheritDoc }
+     * @param id
+     * @return
      */
     @Transactional(readOnly = true)
     ClassRoom getById(Integer id);
 
     /**
      *
-     * {@inheritDoc }
+     * @param contact
      */
     void save(ClassRoom contact);
 
     /**
      *
-     * {@inheritDoc }
+     * @return
      */
     @Transactional(readOnly = true)
     List<ClassRoom> selectAll();
 
     /**
      *
-     * {@inheritDoc }
+     * @param contact
      */
     void update(ClassRoom contact);
 
