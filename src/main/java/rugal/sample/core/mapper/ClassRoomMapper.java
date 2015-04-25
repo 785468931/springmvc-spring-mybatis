@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.mapping.FetchType;
 import rugal.sample.core.entity.ClassRoom;
 import rugal.sample.core.entity.Student;
 
@@ -17,24 +18,26 @@ import rugal.sample.core.entity.Student;
  *
  * @author Rugal Bernstein
  */
-public interface ClassRoomMapper
-{
+public interface ClassRoomMapper {
 
-    String TABLE_NAME = "class_room";
+    String TABLE_NAME = ClassRoom.TABLE_NAME;
 
     @Select("SELECT * FROM " + TABLE_NAME)
     List<ClassRoom> selectAll();
 
     @Select("SELECT * FROM " + TABLE_NAME + " WHERE id = #{id}")
-    @Results(value =
-    {
-        @Result(id = true, property = "id", column = "crid", javaType = Integer.class),
-        @Result(property = "name", column = "name", javaType = String.class),
-        @Result(property = "students", column = "crid", javaType = Student.class, many = @Many(
-                select = "rugal.sample.core.mapper.StudentMapper.findByClassRoom"))
-    })
-    @Many
-    ClassRoom getByID(Integer id);
+    @Results(value
+            = {
+                @Result(id = true, property = "id", column = "id", javaType = Integer.class),
+                @Result(property = "name", column = "name", javaType = String.class),
+                @Result(property = "students", column = "crid", javaType = List.class, many = @Many(
+                                select = "rugal.sample.core.mapper.StudentMapper.findByClassRoom",
+                                fetchType = FetchType.LAZY))
+            })
+    ClassRoom getByID(@Param("id") Integer id);
+
+    @Select("SELECT * FROM " + TABLE_NAME + " WHERE crid = ${crid}")
+    List<Student> findByClassRoom(@Param(value = "crid") Integer crid);
 
     @Select("SELECT * FROM " + TABLE_NAME + " WHERE name LIKE '%${name}%' ")
     List<ClassRoom> findByName(@Param(value = "name") String name);

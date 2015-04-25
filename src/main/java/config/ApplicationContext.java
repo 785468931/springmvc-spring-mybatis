@@ -1,6 +1,6 @@
 package config;
 
-import com.jolbox.bonecp.BoneCPDataSource;
+import com.zaxxer.hikari.HikariDataSource;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -24,63 +24,35 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(
-    {
-        "classpath:jdbc.properties"
-    })
-@MapperScan("rugal.sample.core.mapper")
+        {
+            "classpath:jdbc.properties"
+        })
 @ComponentScan(value = "rugal")
+@MapperScan("rugal.sample.core.mapper")
 public class ApplicationContext
 {
-
     @Autowired
     private Environment env;
 
-//<editor-fold defaultstate="collapsed" desc="Hikari connection pool configure">
-//    @Bean
-//    public HikariConfig hikariConfig()
-//    {
-//        HikariConfig hikariConfig = new HikariConfig();
-//        hikariConfig.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
-//        hikariConfig.setUsername(env.getProperty("jdbc.username"));
-//        hikariConfig.setPassword(env.getProperty("jdbc.password"));
-//        hikariConfig.setMaximumPoolSize(3);
-//        hikariConfig.setJdbc4ConnectionTest(false);
-//        hikariConfig.setConnectionTestQuery("SELECT 1;");
-//        Properties dataSourceProperties = new Properties();
-//        dataSourceProperties.put("serverName", "localhost");
-//        dataSourceProperties.put("databaseName", "postgres");
-//        hikariConfig.setDataSourceProperties(dataSourceProperties);
-//        return hikariConfig;
-//    }
-//
-//    @Bean(destroyMethod = "shutdown")
-//    public DataSource dataSource()
-//    {
-//        HikariDataSource dataSource = new HikariDataSource(hikariConfig());
-//        return dataSource;
-//    }
-//</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="BoneCP configuration">
+//<editor-fold defaultstate="collapsed" desc="HikariCP Datasoure Configuration" >
     @Bean(destroyMethod = "close")
+    @Autowired
     public DataSource dataSource()
     {
-        BoneCPDataSource dataSource = new BoneCPDataSource();
-        dataSource.setDriverClass(env.getProperty("jdbc.driverClassName"));
-        dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+        HikariDataSource dataSource = new HikariDataSource();
         dataSource.setUsername(env.getProperty("jdbc.username"));
         dataSource.setPassword(env.getProperty("jdbc.password"));
-        dataSource.setIdleConnectionTestPeriodInMinutes(60);
-        dataSource.setIdleMaxAgeInMinutes(240);
-        dataSource.setMaxConnectionsPerPartition(10);
-        dataSource.setMinConnectionsPerPartition(1);
-        dataSource.setPartitionCount(1);
-        dataSource.setAcquireIncrement(5);
-        dataSource.setStatementsCacheSize(100);
+        dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
+        dataSource.setConnectionTestQuery("SELECT 1;");
+        dataSource.setMaximumPoolSize(3);
+        dataSource.setAutoCommit(false);
+        //------------------------------
         return dataSource;
     }
 //</editor-fold>
 
-//<editor-fold defaultstate="collapsed" desc="mybatis sql session factory">
+//<editor-fold defaultstate="collapsed" desc="Mybatis sql session factory">
     @Bean
     @Autowired
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception
@@ -94,7 +66,7 @@ public class ApplicationContext
     }
 //</editor-fold>
 
-//<editor-fold defaultstate="collapsed" desc="dataSource transaction manager">
+//<editor-fold defaultstate="collapsed" desc="Transaction Manager">
     @Bean
     @Autowired
     public DataSourceTransactionManager transactionManager(DataSource dataSource)
@@ -103,4 +75,5 @@ public class ApplicationContext
         return txManager;
     }
 //</editor-fold>
+
 }

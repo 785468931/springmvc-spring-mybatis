@@ -6,8 +6,9 @@ import java.util.List;
  *
  * @author Rugal Bernstein
  */
-public class ClassRoom
-{
+public class ClassRoom {
+
+    public static final String TABLE_NAME = "class_room";
 
     private Integer id;
 
@@ -15,33 +16,27 @@ public class ClassRoom
 
     List<Student> students;
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public List<Student> getStudents()
-    {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students)
-    {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 }

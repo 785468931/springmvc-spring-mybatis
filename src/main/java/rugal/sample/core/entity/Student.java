@@ -4,8 +4,9 @@ package rugal.sample.core.entity;
  *
  * @author Rugal Bernstein
  */
-public class Student
-{
+public class Student {
+
+    public static final String TABLE_NAME = "student";
 
     private Integer id;
 
@@ -13,38 +14,31 @@ public class Student
 
     private ClassRoom classRoom;
 
-    public Student()
-    {
+    public Student() {
 
     }
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public ClassRoom getClassRoom()
-    {
+    public ClassRoom getClassRoom() {
         return classRoom;
     }
 
-    public void setClassRoom(ClassRoom classRoom)
-    {
+    public void setClassRoom(ClassRoom classRoom) {
         this.classRoom = classRoom;
     }
 
